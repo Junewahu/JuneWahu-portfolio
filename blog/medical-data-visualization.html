@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Data Visualization | Dr. June Wahu</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dr. June Wahu | Medical Tech Portfolio</title>
+        <meta name="description" content="Final year medical student with a passion for combining medical expertise with technological innovation">
+        
+        <!-- Favicon -->
+        <link rel="icon" href="assets/images/favicon.ico">
+        
+        <!-- Font Awesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+       
+        <!-- Our CSS -->
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/light-mode.css" id="theme-style">
+    
+        <title>Medical Data Visualization | Dr. June Wahu's Blog</title>
+    </head>
+
+<body>
+<!-- Navigation -->
+<header class="glassmorphism">
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="#">Dr.<span>June Wahu, MBChB Candidate⚕️ </span></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <div class="theme-toggle">
+                        <input type="checkbox" id="dark-mode-toggle">
+                        <label for="dark-mode-toggle" class="toggle-label">
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                            <span class="ball"></span>
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </div>
+</header>  <!-- This closes the navigation -->
+
+    <main class="blog-post">
+        <div class="container">
+            <article class="glassmorphism">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <span class="post-category">Clinical Tools</span>
+                        <span class="post-date">March 25, 2025</span>
+                    </div>
+                    <h1>Effective Medical Data Visualization Techniques</h1>
+                    <div class="post-author">
+                        <img src="../assets/images/profile.jpg" alt="Your Name">
+                        <div>
+                            <span>By Dr. June Wahu</span>
+                            <span>MBChB</span>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="post-content">
+                    <figure class="post-image">
+                        <img src="../assets/images/blog/data-viz.jpg" alt="Medical data visualization examples">
+                        <figcaption>Different visualization techniques for medical data</figcaption>
+                    </figure>
+
+                    <p>In today's data-driven healthcare environment, effective visualization of medical information is crucial for accurate diagnosis, treatment planning, and patient communication. Through my clinical rotations and technical projects, I've identified several key principles for presenting medical data effectively.</p>
+
+                    <h2>Choosing the Right Visualization</h2>
+                    <p>Different types of medical data require different visualization approaches:</p>
+                    
+                    <div class="viz-examples">
+                        <div class="viz-item">
+                            <h3>Time-Series Data</h3>
+                            <p>For vital signs or lab values over time:</p>
+                            <img src="../assets/images/blog/line-chart.png" alt="Line chart example">
+                            <p><strong>Best for:</strong> Tracking patient progress, medication effects</p>
+                        </div>
+                        
+                        <div class="viz-item">
+                            <h3>Comparative Data</h3>
+                            <p>For treatment outcomes or group comparisons:</p>
+                            <img src="../assets/images/blog/bar-chart.png" alt="Bar chart example">
+                            <p><strong>Best for:</strong> Clinical trial results, population health</p>
+                        </div>
+                    </div>
+
+                    <h2>Interactive Dashboards</h2>
+                    <p>Modern clinical tools often use interactive visualizations. Key considerations:</p>
+                    <ul>
+                        <li>Filtering options for different patient cohorts</li>
+                        <li>Drill-down capabilities for detailed analysis</li>
+                        <li>Responsive design for mobile clinicians</li>
+                    </ul>
+
+                    <h2>Technical Implementation</h2>
+                    <p>For web-based medical dashboards, I recommend:</p>
+                    <div class="code-tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" data-tab="js">JavaScript</button>
+                            <button class="tab-btn" data-tab="python">Python</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="js-tab">
+                            <pre><code class="language-javascript">
+// Using Chart.js for medical data visualization
+const ctx = document.getElementById('medicalChart').getContext('2d');
+const medicalChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+            label: 'Blood Pressure (mmHg)',
+            data: [120, 118, 115, 122, 119],
+            borderColor: '#FF6B6B',
+            tension: 0.1
+        }]
+    }
+});
+                            </code></pre>
+                        </div>
+                        
+                        <div class="tab-content" id="python-tab">
+                            <pre><code class="language-python">
+# Using Matplotlib for clinical research
+import matplotlib.pyplot as plt
+
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May']
+bp_values = [120, 118, 115, 122, 119]
+
+plt.plot(months, bp_values, color='#FF6B6B')
+plt.title('Patient Blood Pressure Trend')
+plt.ylabel('mmHg')
+plt.show()
+                            </code></pre>
+                        </div>
+                    </div>
+
+                    <div class="key-takeaways">
+                        <h3>Key Takeaways</h3>
+                        <ul>
+                            <li>Match visualization type to data characteristics</li>
+                            <li>Prioritize clarity over decorative elements</li>
+                            <li>Ensure accessibility for color-blind users</li>
+                            <li>Include proper context and scales</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <footer class="post-footer">
+                    <div class="post-tags">
+                        <a href="#">#DataViz</a>
+                        <a href="#">#ClinicalTools</a>
+                        <a href="#">#MedicalInformatics</a>
+                    </div>
+                    <div class="post-navigation">
+                        <a href="#" class="btn btn-secondary">← Previous Article</a>
+                        <a href="#" class="btn btn-primary">Next Article →</a>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Dr. JuneWahu. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

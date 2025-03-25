@@ -1,0 +1,37 @@
+/* Dark Mode Specific Styles */
+body {
+    background-color: #1A1A2E;
+    color: #E2E2E2;
+}
+
+/* Navigation */
+header {
+    background: rgba(26, 26, 46, 0.8);
+}
+
+.nav-links a {
+    color: #E2E2E2;
+}
+
+.nav-links a:hover {
+    color: #FF6B6B;
+}
+
+.logo a {
+    color: #E2E2E2;
+}
+
+/* Cards */
+.card {
+    background: rgba(30, 30, 60, 0.8);
+}
+
+/* Timeline */
+.timeline-item::before {
+    background: #FF6B6B;
+}
+
+/* Progress Bars */
+.progress-bar {
+    background: #2A2A4E;
+}

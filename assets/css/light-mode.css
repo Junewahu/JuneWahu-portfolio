@@ -1,0 +1,45 @@
+/* Light Mode Specific Styles */
+body {
+    background-color: #F7FFF7;
+    color: #292F36;
+}
+
+/* Navigation */
+header {
+    background: rgba(247, 255, 247, 0.8);
+}
+
+.nav-links a {
+    color: #292F36;
+}
+
+.nav-links a:hover {
+    color: #FF6B6B;
+}
+
+.logo a {
+    color: #292F36;
+}
+
+.logo span {
+    color: #4ECDC4;
+}
+
+/* Cards */
+.card {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Timeline */
+.timeline-item::before {
+    background: #FF6B6B;
+}
+
+/* Progress Bars */
+.progress-bar {
+    background: #e0e0e0;
+}
+
+.progress {
+    background: #4ECDC4;
+}

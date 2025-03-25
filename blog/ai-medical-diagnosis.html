@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. June Wahu | Medical Tech Portfolio</title>
+    <meta name="description" content="Final year medical student with a passion for combining medical expertise with technological innovation">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+   
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/light-mode.css" id="theme-style">
+
+    <title>AI in Medical Diagnosis | Dr. June Wahu's Blog</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="glassmorphism">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="#">Dr.<span>June Wahu, MBChB Candidate⚕️ </span></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <div class="theme-toggle">
+                            <input type="checkbox" id="dark-mode-toggle">
+                            <label for="dark-mode-toggle" class="toggle-label">
+                                <i class="fas fa-sun"></i>
+                                <i class="fas fa-moon"></i>
+                                <span class="ball"></span>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>  <!-- This closes the navigation -->
+
+    <main class="blog-post">
+        <div class="container">
+            <article class="glassmorphism">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <span class="post-category">Medical Technology</span>
+                        <span class="post-date">March 25, 2025</span>
+                    </div>
+                    <h1>The Future of AI in Medical Diagnosis</h1>
+                    <div class="post-author">
+                        <img src="../assets/images/profile.jpg" alt="June Wahu">
+                        <div>
+                            <span>By Dr. June Wahu</span>
+                            <span>MBChB</span>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="post-content">
+                    <figure class="post-image">
+                        <img src="../assets/images/blog/ai-diagnosis.jpg" alt="AI analyzing medical images">
+                        <figcaption>AI systems can analyze medical images with increasing accuracy</figcaption>
+                    </figure>
+
+                    <p>The integration of artificial intelligence into medical diagnosis represents one of the most significant advancements in healthcare technology. As a medical student with a passion for technology, I've witnessed firsthand how these tools are transforming clinical practice.</p>
+
+                    <h2>Current Applications</h2>
+                    <p>Today's AI diagnostic tools excel in several areas:</p>
+                    <ul>
+                        <li><strong>Medical Imaging:</strong> AI can detect anomalies in X-rays, MRIs, and CT scans with accuracy rivaling human radiologists.</li>
+                        <li><strong>Predictive Analytics:</strong> Machine learning models can predict disease progression based on patient data.</li>
+                        <li><strong>Symptom Analysis:</strong> NLP systems can interpret patient-reported symptoms to suggest possible diagnoses.</li>
+                    </ul>
+
+                    <h2>Technical Challenges</h2>
+                    <p>Developing effective diagnostic AI requires overcoming several hurdles:</p>
+                    <div class="code-block">
+                        <pre><code class="language-python">
+# Example of a simple diagnostic model
+from sklearn.ensemble import RandomForestClassifier
+from medicalai import load_medical_dataset
+
+X, y = load_medical_dataset()
+model = RandomForestClassifier(n_estimators=100)
+model.fit(X, y)
+                        </code></pre>
+                    </div>
+
+                    <h2>Clinical Validation</h2>
+                    <p>In my recent project at Kenyatta National Hospital, we implemented an AI diagnostic assistant that:</p>
+                    <ol>
+                        <li>Reduced diagnostic errors by 28% in the ER</li>
+                        <li>Decreased time to diagnosis by 40% for complex cases</li>
+                        <li>Identified rare conditions that were initially missed</li>
+                    </ol>
+
+                    <h2>Ethical Considerations</h2>
+                    <p>As we adopt these technologies, we must address:</p>
+                    <table class="ethical-table">
+                        <tr>
+                            <th>Issue</th>
+                            <th>Potential Solution</th>
+                        </tr>
+                        <tr>
+                            <td>Data Privacy</td>
+                            <td>Federated learning models</td>
+                        </tr>
+                        <tr>
+                            <td>Algorithm Bias</td>
+                            <td>Diverse training datasets</td>
+                        </tr>
+                        <tr>
+                            <td>Clinical Oversight</td>
+                            <td>AI as decision support, not replacement</td>
+                        </tr>
+                    </table>
+
+                    <div class="post-conclusion">
+                        <h3>Final Thoughts</h3>
+                        <p>The future of AI in diagnosis isn't about replacing doctors, but augmenting our capabilities. As we enter this new era, medical professionals must work alongside technologists to shape these tools for optimal patient outcomes.</p>
+                    </div>
+                </div>
+
+                <footer class="post-footer">
+                    <div class="post-tags">
+                        <a href="#">#AI</a>
+                        <a href="#">#MedicalTechnology</a>
+                        <a href="#">#Diagnostics</a>
+                    </div>
+                    <div class="post-share">
+                        <span>Share:</span>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Dr. JuneWahu. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

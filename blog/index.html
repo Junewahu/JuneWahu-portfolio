@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog | Dr. June Wahu</title>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dr. June Wahu | Medical Tech Portfolio</title>
+        <meta name="description" content="Final year medical student with a passion for combining medical expertise with technological innovation">
+        
+        <!-- Favicon -->
+        <link rel="icon" href="assets/images/favicon.ico">
+        
+        <!-- Font Awesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+       
+        <!-- Our CSS -->
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/light-mode.css" id="theme-style">
+    </head>
+    
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/light-mode.css" id="theme-style">
+    <style>
+        /* Blog-specific styles */
+        .blog-hero {
+            background: linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(78,205,196,0.1) 100%);
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .blog-card {
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .blog-card-image {
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+        }
+        
+        .read-time {
+            display: flex;
+            align-items: center;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<header class="glassmorphism">
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="#">Dr.<span>June Wahu, MBChB Candidate⚕️ </span></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <div class="theme-toggle">
+                        <input type="checkbox" id="dark-mode-toggle">
+                        <label for="dark-mode-toggle" class="toggle-label">
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                            <span class="ball"></span>
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </div>
+</header>  <!-- This closes the navigation -->
+
+<header class="glassmorphism">
+        <!-- Copy the same nav from your main page -->
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Medical Tech Blog</h1>
+            <p class="subtitle">Exploring the intersection of healthcare and technology</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search articles...">
+                <button class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <main class="blog-index">
+        <div class="container">
+            <div class="category-filter">
+                <button class="btn btn-secondary active">All Articles</button>
+                <button class="btn btn-secondary">AI/ML</button>
+                <button class="btn btn-secondary">Telemedicine</button>
+                <button class="btn btn-secondary">Clinical Tools</button>
+            </div>
+            
+            <div class="blog-grid">
+                <!-- Article 1 -->
+                <article class="blog-card glassmorphism">
+                    <a href="ai-medical-diagnosis.html" class="blog-card-image">
+                        <img src="../assets/images/blog/ai-diagnosis.jpg" alt="AI in Medical Diagnosis">
+                    </a>
+                    <div class="blog-card-content">
+                        <div class="post-meta">
+                            <span class="category">AI/ML</span>
+                            <span class="date">June 15, 2023</span>
+                        </div>
+                        <h2><a href="ai-medical-diagnosis.html">The Future of AI in Medical Diagnosis</a></h2>
+                        <p>Exploring how artificial intelligence is transforming diagnostic accuracy and efficiency in clinical practice.</p>
+                        <div class="blog-card-footer">
+                            <div class="read-time">
+                                <i class="far fa-clock"></i>
+                                <span>8 min read</span>
+                            </div>
+                            <a href="ai-medical-diagnosis.html" class="btn btn-primary">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="blog-card glassmorphism">
+                    <a href="telemedicine-solutions.html" class="blog-card-image">
+                        <img src="../assets/images/blog/telemed-architecture.jpg" alt="Telemedicine Solutions">
+                    </a>
+                    <div class="blog-card-content">
+                        <div class="post-meta">
+                            <span class="category">Telemedicine</span>
+                            <span class="date">April 3, 2023</span>
+                        </div>
+                        <h2><a href="telemedicine-solutions.html">Building Telemedicine Solutions for Rural Areas</a></h2>
+                        <p>Technical and practical considerations for developing effective telemedicine platforms in resource-limited settings.</p>
+                        <div class="blog-card-footer">
+                            <div class="read-time">
+                                <i class="far fa-clock"></i>
+                                <span>6 min read</span>
+                            </div>
+                            <a href="telemedicine-solutions.html" class="btn btn-primary">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 3 -->
+                <article class="blog-card glassmorphism">
+                    <a href="medical-data-visualization.html" class="blog-card-image">
+                        <img src="../assets/images/blog/data-viz.jpg" alt="Medical Data Visualization">
+                    </a>
+                    <div class="blog-card-content">
+                        <div class="post-meta">
+                            <span class="category">Clinical Tools</span>
+                            <span class="date">February 18, 2023</span>
+                        </div>
+                        <h2><a href="medical-data-visualization.html">Effective Medical Data Visualization Techniques</a></h2>
+                        <p>How to present complex medical data in ways that improve clinical decision-making and patient communication.</p>
+                        <div class="blog-card-footer">
+                            <div class="read-time">
+                                <i class="far fa-clock"></i>
+                                <span>10 min read</span>
+                            </div>
+                            <a href="medical-data-visualization.html" class="btn btn-primary">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="pagination">
+                <button class="btn btn-secondary disabled">Previous</button>
+                <button class="btn btn-primary active">1</button>
+                <button class="btn btn-secondary">2</button>
+                <button class="btn btn-secondary">Next</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Reuse your footer from index.html -->
+    <footer class="footer">
+        <!-- Copy the same footer from your main page -->
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Blog-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter articles by category
+            const filterButtons = document.querySelectorAll('.category-filter button');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // In a real implementation, you would filter the articles here
+                    console.log('Filter by:', this.textContent);
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-bar input');
+            const searchButton = document.querySelector('.search-bar button');
+            
+            searchButton.addEventListener('click', function() {
+                performSearch(searchInput.value);
+            });
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch(this.value);
+                }
+            });
+            
+            function performSearch(query) {
+                // In a real implementation, this would search your articles
+                console.log('Searching for:', query);
+                alert('In a complete implementation, this would search for: ' + query);
+            }
+        });
+    </script>
+</body>
+</html>
