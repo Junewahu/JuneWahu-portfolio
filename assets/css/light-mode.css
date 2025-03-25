@@ -1,45 +1,257 @@
 /* Light Mode Specific Styles */
+:root {
+    /* Modern Medical-Tech Color Palette */
+    --primary: #3a86ff;       /* Vivid Blue */
+    --secondary: #8338ec;     /* Violet */
+    --accent: #ff006e;        /* Magenta */
+    --background: #f8f9fa;    /* Off-white */
+    --text: #212529;         /* Dark Gray */
+    --text-light: #6c757d;   /* Medium Gray */
+    --white: #ffffff;
+    --black: #000000;
+    
+    /* Glassmorphism Effects */
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    
+    /* Card Background */
+    --card-bg: rgba(255, 255, 255, 0.95);
+    
+    /* Shadows */
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
 body {
-    background-color: #F7FFF7;
-    color: #292F36;
+    background-color: var(--background);
+    color: var(--text);
 }
 
-/* Navigation */
-header {
-    background: rgba(247, 255, 247, 0.8);
+/* Header & Navigation */
+.header {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-.nav-links a {
-    color: #292F36;
+.nav-link {
+    color: var(--text-light);
 }
 
-.nav-links a:hover {
-    color: #FF6B6B;
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary);
 }
 
-.logo a {
-    color: #292F36;
-}
-
-.logo span {
-    color: #4ECDC4;
+.logo {
+    color: var(--text);
 }
 
 /* Cards */
 .card {
-    background: rgba(255, 255, 255, 0.8);
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow);
+}
+
+.card-medical {
+    background: linear-gradient(135deg, rgba(58, 134, 255, 0.1), rgba(131, 56, 236, 0.1));
+}
+
+.card-tech {
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(58, 134, 255, 0.1));
+}
+
+.card-research {
+    background: linear-gradient(135deg, rgba(131, 56, 236, 0.1), rgba(255, 0, 110, 0.1));
 }
 
 /* Timeline */
-.timeline-item::before {
-    background: #FF6B6B;
+.timeline::before {
+    background-color: var(--primary);
 }
 
-/* Progress Bars */
-.progress-bar {
-    background: #e0e0e0;
+.timeline-marker {
+    background-color: var(--primary);
+    border: 3px solid var(--background);
+    box-shadow: 0 0 0 3px var(--primary);
 }
 
-.progress {
-    background: #4ECDC4;
+.timeline-date {
+    color: var(--primary);
+}
+
+.timeline-content h4 {
+    color: var(--primary);
+}
+
+/* Skills & Progress Bars */
+.skill-bar {
+    background-color: var(--text-light);
+    opacity: 0.2;
+}
+
+.skill-progress {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+/* Testimonials */
+.testimonial {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.testimonial-content::before,
+.testimonial-content::after {
+    color: var(--primary);
+}
+
+.testimonial-author h4 {
+    color: var(--primary);
+}
+
+.testimonial-author img {
+    border-color: var(--primary);
+}
+
+/* Projects */
+.project-card {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.project-badge {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.project-category {
+    color: var(--primary);
+}
+
+.project-overlay {
+    background-color: rgba(58, 134, 255, 0.8);
+}
+
+.project-link {
+    border-color: var(--white);
+    color: var(--white);
+}
+
+.project-link:hover {
+    background-color: var(--white);
+    color: var(--primary);
+}
+
+/* Blog */
+.blog-card {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.category {
+    color: var(--primary);
+}
+
+.read-more {
+    color: var(--primary);
+}
+
+.read-more:hover {
+    color: var(--secondary);
+}
+
+/* Contact Form */
+.contact-form {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.form-group input,
+.form-group textarea {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.1);
+}
+
+.form-group i {
+    color: var(--text-light);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--white);
+}
+
+.footer::before {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.footer-links a {
+    color: var(--text-light);
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+.social-icons a {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--text);
+}
+
+.social-icons a:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.footer-contact .contact-item i {
+    color: var(--primary);
+}
+
+.footer-contact .contact-item a:hover {
+    color: var(--primary);
+}
+
+/* Theme Color Picker */
+.color-options {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    background-color: var(--primary);
+    color: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.back-to-top:hover {
+    background-color: var(--secondary);
+}
+
+/* Particles Background */
+#particles-js {
+    background-color: var(--background);
+}
+
+/* Floating Shapes */
+.floating-shapes .shape {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+/* Glassmorphism Elements */
+.glassmorphism {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
