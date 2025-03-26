@@ -4,104 +4,630 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Building Telemedicine Solutions for Rural Areas | Dr. June Wahu</title>
+    <meta name="description" content="Technical and practical considerations for developing effective telemedicine platforms in resource-limited settings with real-world case studies.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico">
+    
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+   
+    <!-- Our CSS -->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/light-mode.css" id="theme-style">
+    
     <style>
+        :root {
+            --blog-primary: #4e8cff;
+            --blog-primary-light: rgba(78, 140, 255, 0.1);
+            --blog-card-hover-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        /* Improved Navigation Spacing */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem; /* Increased gap between nav items */
+        }
+        
+        .nav-links li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links a {
+            padding: 0.5rem 0;
+            position: relative;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blog-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--blog-primary);
+        }
+        
+        .nav-links a.active {
+            color: var(--blog-primary);
+            font-weight: 600;
+        }
+        
+        /* Theme toggle styles */
+        .theme-toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            margin-left: 1rem; /* Added spacing from last nav item */
+        }
+        
+        .theme-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-label {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .toggle-label:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-label {
+            background-color: var(--blog-primary);
+        }
+        
+        input:checked + .toggle-label:before {
+            transform: translateX(30px);
+        }
+        
+        .toggle-label i {
+            position: absolute;
+            top: 6px;
+            font-size: 0.8rem;
+        }
+        
+        .toggle-label .fa-sun {
+            left: 8px;
+            color: #f1c40f;
+        }
+        
+        .toggle-label .fa-moon {
+            right: 8px;
+            color: #f5f6fa;
+        }
+        
+        /* Blog Post Styles */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--blog-primary);
+            z-index: 1000;
+            transition: width 0.2s ease;
+        }
+        
         .blog-post {
             max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 6rem 1rem 3rem;
         }
         
         .blog-header {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
         }
         
         .blog-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
             line-height: 1.3;
+            color: var(--heading-color);
+            font-family: 'Playfair Display', serif;
         }
         
         .blog-meta {
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
             color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+        
+        .category {
+            background: var(--blog-primary-light);
+            color: var(--blog-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--blog-primary-light);
+        }
+        
+        .author-details {
+            text-align: left;
+        }
+        
+        .author-name {
+            display: block;
+            font-weight: 600;
+            color: var(--heading-color);
+        }
+        
+        .author-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .author-social {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .author-social a {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+        
+        .author-social a:hover {
+            color: var(--blog-primary);
+        }
+        
+        .blog-featured-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         
         .blog-content {
             line-height: 1.8;
             font-size: 1.1rem;
+            color: var(--text-primary);
         }
         
         .blog-content img {
             max-width: 100%;
             height: auto;
             border-radius: 8px;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
         .blog-content h2 {
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
+            margin-top: 3.5rem;
+            margin-bottom: 1.8rem;
+            color: var(--heading-color);
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .blog-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--blog-primary);
+            border-radius: 3px;
         }
         
         .blog-content h3 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+            color: var(--heading-color);
         }
         
         .blog-content p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+        }
+        
+        .blog-content ul, 
+        .blog-content ol {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.8rem;
         }
         
         .blog-content blockquote {
-            border-left: 4px solid var(--primary);
-            padding-left: 1.5rem;
-            margin: 2rem 0;
+            border-left: 4px solid var(--blog-primary);
+            padding: 1.5rem 2rem;
+            margin: 3rem 0;
             font-style: italic;
             color: var(--text-secondary);
+            background: var(--blog-primary-light);
+            border-radius: 0 8px 8px 0;
+            position: relative;
         }
         
-        .back-to-blog {
-            display: inline-block;
-            margin-top: 3rem;
-            color: var(--primary);
-            font-weight: 500;
+        .blog-content blockquote::before {
+            content: '\201C';
+            font-size: 4rem;
+            position: absolute;
+            left: 1rem;
+            top: 0.5rem;
+            color: var(--blog-primary);
+            opacity: 0.2;
+            font-family: serif;
         }
         
         .tech-spec {
             background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .tech-spec h4 {
             margin-top: 0;
-            color: var(--primary);
+            color: var(--blog-primary);
+            font-size: 1.2rem;
+        }
+        
+        .share-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .share-title {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .share-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        
+        .share-button:hover {
+            transform: translateY(-3px);
+        }
+        
+        .twitter { background: #1DA1F2; }
+        .linkedin { background: #0077B5; }
+        .facebook { background: #4267B2; }
+        .link { background: var(--blog-primary); }
+        
+        .related-articles {
+            margin: 4rem 0 2rem;
+        }
+        
+        .related-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--heading-color);
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .related-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--blog-primary);
+            border-radius: 3px;
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .related-card {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+        
+        .related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .related-card-image {
+            height: 160px;
+            overflow: hidden;
+        }
+        
+        .related-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .related-card:hover .related-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .related-card-content {
+            padding: 1.5rem;
+        }
+        
+        .related-card h3 {
+            font-size: 1.1rem;
+            margin: 0.5rem 0 1rem;
+        }
+        
+        .related-card h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .related-card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+            color: var(--blog-primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-blog:hover {
+            gap: 0.8rem;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--card-bg);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-brand {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-brand .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            text-decoration: none;
+        }
+        
+        .footer-brand p {
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
+        }
+        
+        .footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .footer .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer .social-links a:hover {
+            color: var(--blog-primary);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            color: var(--heading-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--blog-primary);
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-bottom p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
             .blog-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            
+            .blog-featured-image {
+                height: 300px;
+            }
+            
+            .blog-post {
+                padding: 4rem 1rem 2rem;
+            }
+            
+            .share-section {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .blog-content h2 {
+                margin-top: 3rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .footer-column {
+                text-align: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            /* Mobile navigation spacing */
+            .nav-links {
+                gap: 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem 0;
+            }
+            
+            .theme-toggle {
+                margin-left: 0;
+                margin-top: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation (same as index.html) -->
+    <!-- Reading Progress Indicator -->
+    <div class="reading-progress"></div>
+
+    <!-- Navigation -->
     <header class="glassmorphism">
         <div class="container">
             <nav>
                 <div class="logo">
-                    <a href="../index.html">Dr.<span>June Wahu, MBChB Candidate⚕️ </span></a>
+                    <a href="../index.html">Dr.<span>June Wahu, MBChB ⚕️</span></a>
                 </div>
                 <ul class="nav-links">
                     <li><a href="../index.html#home">Home</a></li>
@@ -111,7 +637,7 @@
                     <li><a href="../index.html#contact">Contact</a></li>
                     <li>
                         <div class="theme-toggle">
-                            <input type="checkbox" id="dark-mode-toggle">
+                            <input type="checkbox" id="dark-mode-toggle" checked>
                             <label for="dark-mode-toggle" class="toggle-label">
                                 <i class="fas fa-sun"></i>
                                 <i class="fas fa-moon"></i>
@@ -133,27 +659,33 @@
         <div class="container">
             <article>
                 <header class="blog-header">
-                    <div class="post-meta">
-                        <span class="category">Telemedicine</span>
-                        <span class="date">April 3, 2023</span>
-                        <span class="read-time">6 min read</span>
-                    </div>
+                    <span class="category">Telemedicine</span>
                     <h1 class="blog-title">Building Telemedicine Solutions for Rural Areas</h1>
+                    <div class="blog-meta">
+                        <span class="date"><i class="far fa-calendar-alt"></i> April 3, 2025</span>
+                        <span class="read-time"><i class="far fa-clock"></i> 6 min read</span>
+                    </div>
+                    
                     <div class="author-info">
                         <img src="../assets/images/profile.jpg" alt="Dr. June Wahu" class="author-avatar">
-                        <div>
+                        <div class="author-details">
                             <span class="author-name">Dr. June Wahu</span>
                             <span class="author-title">Medical Tech Innovator</span>
+                            <div class="author-social">
+                                <a href="https://twitter.com/junewahu" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="https://linkedin.com/in/junewahumwangi" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://github.com/junewahu" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
                         </div>
                     </div>
+                    
+                    <img src="../assets/images/blog/telemed-pic.png" alt="Telemedicine in rural setting" class="blog-featured-image">
                 </header>
                 
                 <div class="blog-content">
-                    <img src="../assets/images/blog/ai-diagnosis2.jpg" alt="Telemedicine in rural setting">
-                    
                     <p>Telemedicine has emerged as a critical tool for bridging healthcare gaps in rural and underserved communities. However, developing effective telemedicine solutions for these areas requires careful consideration of unique technical, clinical, and social factors that differ from urban implementations.</p>
                     
-                    <h2>Key Challenges in Rural Telemedicine</h2>
+                    <h2 id="key-challenges">Key Challenges in Rural Telemedicine</h2>
                     
                     <p>Before designing any solution, it's essential to understand the specific challenges faced in rural healthcare delivery:</p>
                     
@@ -184,7 +716,7 @@
                         </ul>
                     </div>
                     
-                    <h2>Technical Architecture Considerations</h2>
+                    <h2 id="technical-architecture">Technical Architecture Considerations</h2>
                     
                     <p>Based on my research and fieldwork, here are key technical recommendations for rural telemedicine systems:</p>
                     
@@ -195,7 +727,7 @@
                         <li><strong>Alternative Protocols:</strong> Consider SMS-based or USSD solutions for basic consultations</li>
                     </ul>
                     
-                    <img src="../assets/images/blog/telemed-architecture.jpg" alt="Telemedicine system architecture">
+                    <img src="../assets/images/blog/telemed-architecture.png" alt="Telemedicine system architecture">
                     
                     <h3>2. Hardware Requirements</h3>
                     <p>Equipment should be:</p>
@@ -213,7 +745,7 @@
                         <li>Implement robust synchronization for intermittent connections</li>
                     </ul>
                     
-                    <h2>Clinical Workflow Integration</h2>
+                    <h2 id="clinical-workflow">Clinical Workflow Integration</h2>
                     
                     <p>Successful telemedicine implementations carefully adapt clinical workflows to the local context:</p>
                     
@@ -236,7 +768,7 @@
                         "The most successful rural telemedicine programs don't just transplant urban models—they reimagine care delivery from the ground up to meet local needs and constraints."
                     </blockquote>
                     
-                    <h2>Case Study: Mobile Telemedicine in East Africa</h2>
+                    <h2 id="case-study">Case Study: Mobile Telemedicine in East Africa</h2>
                     
                     <p>During my fieldwork in Kenya, I observed several innovative approaches:</p>
                     
@@ -248,7 +780,7 @@
                     
                     <p>These adaptations resulted in a 40% increase in specialist consultations for rural patients compared to traditional referral systems.</p>
                     
-                    <h2>Future Directions</h2>
+                    <h2 id="future-directions">Future Directions</h2>
                     
                     <p>Emerging technologies offer exciting possibilities for rural telemedicine:</p>
                     
@@ -259,6 +791,60 @@
                     </ul>
                     
                     <p>By continuing to innovate while remaining grounded in local realities, telemedicine can dramatically improve healthcare access for rural populations worldwide.</p>
+                    
+                    <div class="share-section">
+                        <h3 class="share-title">Found this article valuable? Share it!</h3>
+                        <div class="share-buttons">
+                            <a href="#" class="share-button twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="share-button linkedin"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="share-button facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="share-button link" id="copy-link"><i class="fas fa-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="related-articles">
+                    <h3 class="related-title">Related Articles</h3>
+                    <div class="related-grid">
+                        <article class="related-card">
+                            <a href="ai-medical-diagnosis.html" class="related-card-image">
+                                <img src="../assets/images/blog/ai-diagnosis.jpg" alt="AI in Medical Diagnosis">
+                            </a>
+                            <div class="related-card-content">
+                                <div class="related-card-meta">
+                                    <span class="category">AI/ML</span>
+                                    <span class="date">April 3, 2025</span>
+                                </div>
+                                <h3><a href="ai-medical-diagnosis.html">The Future of AI in Medical Diagnosis</a></h3>
+                            </div>
+                        </article>
+                        
+                        <article class="related-card">
+                            <a href="wearable-health-tech.html" class="related-card-image">
+                                <img src="../assets/images/blog/wearables.jpg" alt="Wearable Health Technology">
+                            </a>
+                            <div class="related-card-content">
+                                <div class="related-card-meta">
+                                    <span class="category">Wearables</span>
+                                    <span class="date">April 2, 2025</span>
+                                </div>
+                                <h3><a href="wearable-health-tech.html">Next-Gen Wearable Health Technology</a></h3>
+                            </div>
+                        </article>
+                        
+                        <article class="related-card">
+                            <a href="blockchain-healthcare.html" class="related-card-image">
+                                <img src="../assets/images/blog/blockchain.jpg" alt="Blockchain in Healthcare">
+                            </a>
+                            <div class="related-card-content">
+                                <div class="related-card-meta">
+                                    <span class="category">Clinical Tools</span>
+                                    <span class="date">April 1, 2025</span>
+                                </div>
+                                <h3><a href="blockchain-healthcare.html">Blockchain Applications in Healthcare Data Security</a></h3>
+                            </div>
+                        </article>
+                    </div>
                 </div>
                 
                 <a href="index.html" class="back-to-blog"><i class="fas fa-arrow-left"></i> Back to all articles</a>
@@ -266,13 +852,18 @@
         </div>
     </main>
 
-    <!-- Footer (same as index.html) -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="../index.html" class="logo">Dr. June Wahu</a>
                     <p>Bridging Medicine and Technology</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/junewahumwangi" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/junewahu" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com/junewahu" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
@@ -285,11 +876,11 @@
                         </ul>
                     </div>
                     <div class="footer-column">
-                        <h3>Connect</h3>
+                        <h3>Resources</h3>
                         <ul>
-                            <li><a href="https://linkedin.com/in/junewahumwangi" target="_blank">LinkedIn</a></li>
-                            <li><a href="https://github.com/junewahu" target="_blank">GitHub</a></li>
-                            <li><a href="https://twitter.com/junewahu" target="_blank">Twitter</a></li>
+                            <li><a href="#">Publications</a></li>
+                            <li><a href="#">Presentations</a></li>
+                            <li><a href="#">Tools</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
@@ -297,6 +888,7 @@
                         <ul>
                             <li><a href="mailto:junewahu@gmail.com">junewahu@gmail.com</a></li>
                             <li><a href="tel:+254759698950">+254 759 698 950</a></li>
+                            <li><a href="#">Nairobi, Kenya</a></li>
                         </ul>
                     </div>
                 </div>
@@ -304,7 +896,7 @@
             <div class="footer-bottom">
                 <p>&copy; 2025 Dr. June Wahu. All rights reserved.</p>
                 <div class="theme-toggle">
-                    <input type="checkbox" id="footer-dark-mode-toggle">
+                    <input type="checkbox" id="footer-dark-mode-toggle" checked>
                     <label for="footer-dark-mode-toggle" class="toggle-label">
                         <i class="fas fa-sun"></i>
                         <i class="fas fa-moon"></i>
@@ -316,5 +908,116 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script>
+        // Reading progress indicator
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            document.querySelector('.reading-progress').style.width = scrollProgress + '%';
+        });
+        
+        // Copy link functionality
+        document.getElementById('copy-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(function() {
+                const tooltip = document.createElement('div');
+                tooltip.textContent = 'Link copied!';
+                tooltip.style.position = 'fixed';
+                tooltip.style.bottom = '20px';
+                tooltip.style.right = '20px';
+                tooltip.style.padding = '10px 15px';
+                tooltip.style.background = 'var(--blog-primary)';
+                tooltip.style.color = 'white';
+                tooltip.style.borderRadius = '5px';
+                tooltip.style.zIndex = '1000';
+                document.body.appendChild(tooltip);
+                
+                setTimeout(function() {
+                    document.body.removeChild(tooltip);
+                }, 2000);
+            });
+        });
+        
+        // Share buttons functionality
+        const shareButtons = document.querySelectorAll('.share-button:not(#copy-link)');
+        shareButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                let url;
+                const pageUrl = encodeURIComponent(window.location.href);
+                const pageTitle = encodeURIComponent(document.title);
+                
+                if (this.classList.contains('twitter')) {
+                    url = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+                } else if (this.classList.contains('linkedin')) {
+                    url = `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=${pageTitle}`;
+                } else if (this.classList.contains('facebook')) {
+                    url = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+                }
+                
+                window.open(url, '_blank', 'width=600,height=400');
+            });
+        });
+        
+        // Smooth scroll for table of contents links
+        document.querySelectorAll('.blog-content h2[id]').forEach(heading => {
+            const link = document.createElement('a');
+            link.href = `#${heading.id}`;
+            link.style.position = 'absolute';
+            link.style.transform = 'translateX(-120%)';
+            link.style.paddingRight = '8px';
+            link.innerHTML = '<i class="fas fa-link" style="font-size: 0.8em; color: var(--blog-primary);"></i>';
+            heading.style.position = 'relative';
+            heading.appendChild(link);
+        });
+        
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('dark-mode-toggle');
+            const footerThemeToggle = document.getElementById('footer-dark-mode-toggle');
+            const themeStyle = document.getElementById('theme-style');
+            
+            // Check for saved theme preference or use preferred color scheme
+            const currentTheme = localStorage.getItem('theme') || 
+                                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            
+            // Apply the current theme
+            if (currentTheme === 'dark') {
+                themeStyle.href = '../assets/css/dark-mode.css';
+                themeToggle.checked = true;
+                if (footerThemeToggle) footerThemeToggle.checked = true;
+            } else {
+                themeStyle.href = '../assets/css/light-mode.css';
+                themeToggle.checked = false;
+                if (footerThemeToggle) footerThemeToggle.checked = false;
+            }
+            
+            // Toggle theme when switch is clicked
+            themeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    themeStyle.href = '../assets/css/dark-mode.css';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeStyle.href = '../assets/css/light-mode.css';
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                // Sync footer toggle if it exists
+                if (footerThemeToggle) {
+                    footerThemeToggle.checked = this.checked;
+                }
+            });
+            
+            // Sync footer toggle with main toggle
+            if (footerThemeToggle) {
+                footerThemeToggle.addEventListener('change', function() {
+                    themeToggle.checked = this.checked;
+                    themeToggle.dispatchEvent(new Event('change'));
+                });
+            }
+        });
+    </script>
 </body>
 </html>

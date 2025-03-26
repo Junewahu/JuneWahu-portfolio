@@ -3,81 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Blog | Dr. June Wahu</title>
+    <title>Digital Health Blog | Dr. June Wahu</title>
+    <meta name="description" content="Exploring the intersection of healthcare and technology with Dr. June Wahu">
     
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dr. June Wahu | Medical Tech Portfolio</title>
-        <meta name="description" content="Final year medical student with a passion for combining medical expertise with technological innovation">
-        
-        <!-- Favicon -->
-        <link rel="icon" href="../assets/images/favicon.ico">
-        
-        <!-- Font Awesome for icons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-       
-        <!-- Our CSS -->
-        <link rel="stylesheet" href="../assets/css/main.css">
-        <link rel="stylesheet" href="../assets/css/light-mode.css" id="theme-style">
-    </head>
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico">
     
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+   
+    <!-- Our CSS -->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/light-mode.css" id="theme-style">
+    
     <style>
+        :root {
+            --blog-primary: #4e8cff;
+            --blog-primary-light: rgba(78, 140, 255, 0.1);
+            --blog-card-hover-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        /* Navigation spacing */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem; /* Added gap between nav items */
+        }
+        
+        .nav-links li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links a {
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        /* Theme toggle styles */
+        .theme-toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .theme-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-label {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .toggle-label:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-label {
+            background-color: var(--blog-primary);
+        }
+        
+        input:checked + .toggle-label:before {
+            transform: translateX(30px);
+        }
+        
+        .toggle-label i {
+            position: absolute;
+            top: 6px;
+            font-size: 0.8rem;
+        }
+        
+        .toggle-label .fa-sun {
+            left: 8px;
+            color: #f1c40f;
+        }
+        
+        .toggle-label .fa-moon {
+            right: 8px;
+            color: #f5f6fa;
+        }
+        
         /* Blog-specific styles */
         .blog-hero {
-            background: linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(78,205,196,0.1) 100%);
-            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(78, 140, 255, 0.08) 0%, rgba(120, 204, 196, 0.08) 100%);
+            padding: 6rem 0 4rem;
             text-align: center;
             margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('../assets/images/blog/pattern.svg') no-repeat center/cover;
+            opacity: 0.03;
+            z-index: 0;
+        }
+        
+        .blog-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .blog-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--blog-primary), #4ecdc4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .blog-hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
         }
         
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
         }
         
         .blog-card {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
             height: 100%;
             display: flex;
             flex-direction: column;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             background: var(--card-bg);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
         }
         
         .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: var(--blog-card-hover-shadow);
+            border-color: var(--blog-primary-light);
         }
         
         .blog-card-image {
-            height: 200px;
+            height: 220px;
             overflow: hidden;
-            border-radius: 10px 10px 0 0;
+            position: relative;
+        }
+        
+        .blog-card-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.1), transparent);
         }
         
         .blog-card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.8s ease;
         }
         
         .blog-card:hover .blog-card-image img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
         
         .blog-card-content {
-            padding: 1.5rem;
+            padding: 1.8rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -85,77 +209,274 @@
         
         .blog-card-footer {
             margin-top: auto;
-            padding-top: 1rem;
+            padding-top: 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-top: 1px solid var(--border-color);
         }
         
         .read-time {
             display: flex;
             align-items: center;
-            color: var(--primary);
+            color: var(--blog-primary);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .read-time i {
+            margin-right: 6px;
             font-size: 0.9rem;
         }
         
         .post-meta {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             font-size: 0.9rem;
+            align-items: center;
         }
         
         .category {
-            background: var(--primary-light);
-            color: var(--primary);
-            padding: 0.2rem 0.5rem;
+            background: var(--blog-primary-light);
+            color: var(--blog-primary);
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .date {
             color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        
+        .blog-card h2 {
+            font-size: 1.4rem;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.4;
+        }
+        
+        .blog-card h2 a {
+            color: inherit;
+            text-decoration: none;
+            background-image: linear-gradient(var(--blog-primary), var(--blog-primary));
+            background-size: 0% 2px;
+            background-repeat: no-repeat;
+            background-position: left 85%;
+            transition: background-size 0.3s ease;
+        }
+        
+        .blog-card h2 a:hover {
+            background-size: 100% 2px;
+        }
+        
+        .blog-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
         
         .search-bar {
             max-width: 600px;
             margin: 2rem auto 0;
             display: flex;
+            position: relative;
         }
         
         .search-bar input {
             flex-grow: 1;
-            padding: 0.8rem 1rem;
+            padding: 1rem 1.5rem;
             border: 1px solid var(--border-color);
-            border-radius: 8px 0 0 8px;
+            border-radius: 50px;
             font-size: 1rem;
+            padding-right: 4rem;
+            transition: all 0.3s ease;
+            background: var(--card-bg);
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--blog-primary);
+            box-shadow: 0 0 0 3px rgba(78, 140, 255, 0.2);
         }
         
         .search-bar button {
-            border-radius: 0 8px 8px 0;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            width: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
         }
         
         .category-filter {
             display: flex;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
             flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .category-filter button {
+            transition: all 0.2s ease;
+            padding: 0.6rem 1.2rem;
+        }
+        
+        .category-filter button.active {
+            background: var(--blog-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(78, 140, 255, 0.3);
         }
         
         .pagination {
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
-            margin-top: 3rem;
+            gap: 0.8rem;
+            margin-top: 4rem;
+        }
+        
+        .pagination button {
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        
+        .pagination button.active {
+            background: var(--blog-primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff4757;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 1;
+            box-shadow: 0 3px 10px rgba(255, 71, 87, 0.3);
+        }
+        
+        .subscribe-cta {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 4rem 0;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .subscribe-cta h2 {
+            margin-bottom: 1rem;
+            color: var(--blog-primary);
+        }
+        
+        .subscribe-cta p {
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .subscribe-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .subscribe-form input {
+            flex-grow: 1;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px 0 0 8px;
+            font-size: 1rem;
+        }
+        
+        .subscribe-form button {
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Footer social links styling */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--blog-primary-light);
+            color: var(--blog-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--blog-primary);
+            color: white;
+            transform: translateY(-2px);
         }
         
         @media (max-width: 768px) {
-            .blog-grid {
-                grid-template-columns: 1fr;
+            .blog-hero {
+                padding: 4rem 0 3rem;
             }
             
-            .category-filter {
-                justify-content: center;
+            .blog-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                gap: 1rem; /* Smaller gap on mobile */
+            }
+            
+            .subscribe-form {
+                flex-direction: column;
+            }
+            
+            .subscribe-form input,
+            .subscribe-form button {
+                border-radius: 8px;
+                width: 100%;
+            }
+            
+            .subscribe-form button {
+                margin-top: 0.8rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-links {
+                margin-top: 2rem;
+            }
+            
+            .footer-column {
+                margin-bottom: 1.5rem;
             }
         }
     </style>
@@ -167,17 +488,17 @@
     <div class="container">
         <nav>
             <div class="logo">
-                <a href="../index.html">Dr.<span>June Wahu, MBChB ⚕️ </span></a>
+                <a href="../index.html">Dr.<span>June Wahu, MBChB ⚕️</span></a>
             </div>
             <ul class="nav-links">
                 <li><a href="../index.html#home">Home</a></li>
                 <li><a href="../index.html#about">About</a></li>
                 <li><a href="../index.html#projects">Projects</a></li>
-                <li><a href="index.html">Blog</a></li>
+                <li><a href="index.html" class="active">Blog</a></li>
                 <li><a href="../index.html#contact">Contact</a></li>
                 <li>
                     <div class="theme-toggle">
-                        <input type="checkbox" id="dark-mode-toggle">
+                        <input type="checkbox" id="dark-mode-toggle" checked>
                         <label for="dark-mode-toggle" class="toggle-label">
                             <i class="fas fa-sun"></i>
                             <i class="fas fa-moon"></i>
@@ -195,279 +516,355 @@
     </div>
 </header>
 
-    <!-- Blog Hero Section -->
-    <section class="blog-hero">
-        <div class="container">
-            <h1>Medical Tech Blog</h1>
-            <p class="subtitle">Exploring the intersection of healthcare and technology</p>
-            <div class="search-bar">
-                <input type="text" placeholder="Search articles...">
-                <button class="btn btn-primary">Search</button>
-            </div>
+<!-- Blog Hero Section -->
+<section class="blog-hero">
+    <div class="container">
+        <h1>Digital Health Blog</h1>
+        <p class="subtitle">Exploring the intersection of healthcare and technology through in-depth articles and analysis</p>
+        <div class="search-bar">
+            <input type="text" placeholder="Search articles...">
+            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Blog Content -->
-    <main class="blog-index">
-        <div class="container">
-            <div class="category-filter">
-                <button class="btn btn-secondary active">All Articles</button>
-                <button class="btn btn-secondary">AI/ML</button>
-                <button class="btn btn-secondary">Telemedicine</button>
-                <button class="btn btn-secondary">Clinical Tools</button>
-                <button class="btn btn-secondary">Wearables</button>
-                <button class="btn btn-secondary">Ethics</button>
-            </div>
-            
-            <div class="blog-grid">
-                <!-- Article 1 -->
-                <article class="blog-card glassmorphism">
-                    <a href="ai-medical-diagnosis.html" class="blog-card-image">
-                        <img src="../assets/images/blog/ai-diagnosis.jpg" alt="AI in Medical Diagnosis">
-                    </a>
-                    <div class="blog-card-content">
-                        <div class="post-meta">
-                            <span class="category">AI/ML</span>
-                            <span class="date">April 3, 2025</span>
-                        </div>
-                        <h2><a href="ai-medical-diagnosis.html">The Future of AI in Medical Diagnosis</a></h2>
-                        <p>Exploring how artificial intelligence is transforming diagnostic accuracy and efficiency in clinical practice.</p>
-                        <div class="blog-card-footer">
-                            <div class="read-time">
-                                <i class="far fa-clock"></i>
-                                <span>8 min read</span>
-                            </div>
-                            <a href="ai-medical-diagnosis.html" class="btn btn-primary">Read Article</a>
-                        </div>
-                    </div>
-                </article>
-                
-                <!-- Article 2 -->
-                <article class="blog-card glassmorphism">
-                    <a href="telemedicine-solutions.html" class="blog-card-image">
-                        <img src="../assets/images/blog/telemed-architecture.jpg" alt="Telemedicine Solutions">
-                    </a>
-                    <div class="blog-card-content">
-                        <div class="post-meta">
-                            <span class="category">Telemedicine</span>
-                            <span class="date">April 3, 2025</span>
-                        </div>
-                        <h2><a href="telemedicine-solutions.html">Building Telemedicine Solutions for Rural Areas</a></h2>
-                        <p>Technical and practical considerations for developing effective telemedicine platforms in resource-limited settings.</p>
-                        <div class="blog-card-footer">
-                            <div class="read-time">
-                                <i class="far fa-clock"></i>
-                                <span>6 min read</span>
-                            </div>
-                            <a href="telemedicine-solutions.html" class="btn btn-primary">Read Article</a>
-                        </div>
-                    </div>
-                </article>
-                
-                <!-- Article 3 -->
-                <article class="blog-card glassmorphism">
-                    <a href="medical-data-visualization.html" class="blog-card-image">
-                        <img src="../assets/images/blog/data-viz.jpg" alt="Medical Data Visualization">
-                    </a>
-                    <div class="blog-card-content">
-                        <div class="post-meta">
-                            <span class="category">Clinical Tools</span>
-                            <span class="date">April 2, 2025</span>
-                        </div>
-                        <h2><a href="medical-data-visualization.html">Effective Medical Data Visualization Techniques</a></h2>
-                        <p>How to present complex medical data in ways that improve clinical decision-making and patient communication.</p>
-                        <div class="blog-card-footer">
-                            <div class="read-time">
-                                <i class="far fa-clock"></i>
-                                <span>10 min read</span>
-                            </div>
-                            <a href="medical-data-visualization.html" class="btn btn-primary">Read Article</a>
-                        </div>
-                    </div>
-                </article>
-                
-                <!-- New Article 4 -->
-                <article class="blog-card glassmorphism">
-                    <a href="wearable-health-tech.html" class="blog-card-image">
-                        <img src="../assets/images/blog/wearables.jpg" alt="Wearable Health Technology">
-                    </a>
-                    <div class="blog-card-content">
-                        <div class="post-meta">
-                            <span class="category">Wearables</span>
-                            <span class="date">April 2, 2025</span>
-                        </div>
-                        <h2><a href="wearable-health-tech.html">Next-Gen Wearable Health Technology</a></h2>
-                        <p>Examining emerging wearable devices that monitor vital signs and predict health events with clinical accuracy.</p>
-                        <div class="blog-card-footer">
-                            <div class="read-time">
-                                <i class="far fa-clock"></i>
-                                <span>7 min read</span>
-                            </div>
-                            <a href="wearable-health-tech.html" class="btn btn-primary">Read Article</a>
-                        </div>
-                    </div>
-                </article>
-                
-                <!-- New Article 5 -->
-                <article class="blog-card glassmorphism">
-                    <a href="ai-medical-ethics.html" class="blog-card-image">
-                        <img src="../assets/images/blog/ai-ethics.jpg" alt="AI Medical Ethics">
-                    </a>
-                    <div class="blog-card-content">
-                        <div class="post-meta">
-                            <span class="category">Ethics</span>
-                            <span class="date">April 2, 2025</span>
-                        </div>
-                        <h2><a href="ai-medical-ethics.html">Ethical Considerations in AI-Driven Healthcare</a></h2>
-                        <p>Navigating the complex ethical landscape of artificial intelligence applications in clinical decision-making.</p>
-                        <div class="blog-card-footer">
-                            <div class="read-time">
-                                <i class="far fa-clock"></i>
-                                <span>9 min read</span>
-                            </div>
-                            <a href="ai-medical-ethics.html" class="btn btn-primary">Read Article</a>
-                        </div>
-                    </div>
-                </article>
-                
-                <!-- New Article 6 -->
-                <article class="blog-card glassmorphism">
-                    <a href="blockchain-healthcare.html" class="blog-card-image">
-                        <img src="../assets/images/blog/blockchain.jpg" alt="Blockchain in Healthcare">
-                    </a>
-                    <div class="blog-card-content">
-                        <div class="post-meta">
-                            <span class="category">Clinical Tools</span>
-                            <span class="date">April 1, 2025</span>
-                        </div>
-                        <h2><a href="blockchain-healthcare.html">Blockchain Applications in Healthcare Data Security</a></h2>
-                        <p>How blockchain technology can revolutionize patient data security and interoperability in healthcare systems.</p>
-                        <div class="blog-card-footer">
-                            <div class="read-time">
-                                <i class="far fa-clock"></i>
-                                <span>11 min read</span>
-                            </div>
-                            <a href="blockchain-healthcare.html" class="btn btn-primary">Read Article</a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            
-            <div class="pagination">
-                <button class="btn btn-secondary disabled">Previous</button>
-                <button class="btn btn-primary active">1</button>
-                <button class="btn btn-secondary">2</button>
-                <button class="btn btn-secondary">Next</button>
-            </div>
+<!-- Blog Content -->
+<main class="blog-index">
+    <div class="container">
+        <div class="category-filter">
+            <button class="btn btn-secondary active">All Articles</button>
+            <button class="btn btn-secondary">AI/ML</button>
+            <button class="btn btn-secondary">Telemedicine</button>
+            <button class="btn btn-secondary">Clinical Tools</button>
+            <button class="btn btn-secondary">Wearables</button>
+            <button class="btn btn-secondary">Ethics</button>
         </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="../index.html" class="logo">Dr. June Wahu</a>
-                    <p>Bridging Medicine and Technology</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h3>Explore</h3>
-                        <ul>
-                            <li><a href="../index.html#home">Home</a></li>
-                            <li><a href="../index.html#about">About</a></li>
-                            <li><a href="../index.html#projects">Projects</a></li>
-                            <li><a href="index.html">Blog</a></li>
-                        </ul>
+        
+        <div class="blog-grid">
+            <!-- Featured Article -->
+            <article class="blog-card glassmorphism">
+                <div class="featured-badge">Featured</div>
+                <a href="ai-medical-diagnosis.html" class="blog-card-image">
+                    <img src="../assets/images/blog/ai-diagnosis.jpg" alt="AI in Medical Diagnosis">
+                </a>
+                <div class="blog-card-content">
+                    <div class="post-meta">
+                        <span class="category">AI/ML</span>
+                        <span class="date">April 3, 2025</span>
                     </div>
-                    <div class="footer-column">
-                        <h3>Connect</h3>
-                        <ul>
-                            <li><a href="https://linkedin.com/in/junewahumwangi" target="_blank">LinkedIn</a></li>
-                            <li><a href="https://github.com/junewahu" target="_blank">GitHub</a></li>
-                            <li><a href="https://twitter.com/junewahu" target="_blank">Twitter</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Contact</h3>
-                        <ul>
-                            <li><a href="mailto:hello@junewahu.com">junewahu@gmail.com</a></li>
-                            <li><a href="tel:+254712345678">+254 759 698 950</a></li>
-                        </ul>
+                    <h2><a href="ai-medical-diagnosis.html">The Future of AI in Medical Diagnosis</a></h2>
+                    <p>Exploring how artificial intelligence is transforming diagnostic accuracy and efficiency in clinical practice through advanced machine learning techniques.</p>
+                    <div class="blog-card-footer">
+                        <div class="read-time">
+                            <i class="far fa-clock"></i>
+                            <span>8 min read</span>
+                        </div>
+                        <a href="ai-medical-diagnosis.html" class="btn btn-primary btn-sm">Read</a>
                     </div>
                 </div>
+            </article>
+            
+            <!-- Article 2 -->
+            <article class="blog-card glassmorphism">
+                <a href="telemedicine-solutions.html" class="blog-card-image">
+                    <img src="../assets/images/blog/telemed-pic.png" alt="Telemedicine Solutions">
+                </a>
+                <div class="blog-card-content">
+                    <div class="post-meta">
+                        <span class="category">Telemedicine</span>
+                        <span class="date">April 3, 2025</span>
+                    </div>
+                    <h2><a href="telemedicine-solutions.html">Building Telemedicine Solutions for Rural Areas</a></h2>
+                    <p>Technical and practical considerations for developing effective telemedicine platforms in resource-limited settings with real-world case studies.</p>
+                    <div class="blog-card-footer">
+                        <div class="read-time">
+                            <i class="far fa-clock"></i>
+                            <span>6 min read</span>
+                        </div>
+                        <a href="telemedicine-solutions.html" class="btn btn-primary btn-sm">Read</a>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Article 3 -->
+            <article class="blog-card glassmorphism">
+                <a href="medical-data-visualization.html" class="blog-card-image">
+                    <img src="../assets/images/blog/data-viz.jpg" alt="Medical Data Visualization">
+                </a>
+                <div class="blog-card-content">
+                    <div class="post-meta">
+                        <span class="category">Clinical Tools</span>
+                        <span class="date">April 2, 2025</span>
+                    </div>
+                    <h2><a href="medical-data-visualization.html">Effective Medical Data Visualization Techniques</a></h2>
+                    <p>How to present complex medical data in ways that improve clinical decision-making and patient communication with interactive examples.</p>
+                    <div class="blog-card-footer">
+                        <div class="read-time">
+                            <i class="far fa-clock"></i>
+                            <span>10 min read</span>
+                        </div>
+                        <a href="medical-data-visualization.html" class="btn btn-primary btn-sm">Read</a>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Article 4 -->
+            <article class="blog-card glassmorphism">
+                <a href="wearable-health-tech.html" class="blog-card-image">
+                    <img src="../assets/images/blog/wearables.jpg" alt="Wearable Health Technology">
+                </a>
+                <div class="blog-card-content">
+                    <div class="post-meta">
+                        <span class="category">Wearables</span>
+                        <span class="date">April 2, 2025</span>
+                    </div>
+                    <h2><a href="wearable-health-tech.html">Next-Gen Wearable Health Technology</a></h2>
+                    <p>Examining emerging wearable devices that monitor vital signs and predict health events with clinical-grade accuracy and reliability.</p>
+                    <div class="blog-card-footer">
+                        <div class="read-time">
+                            <i class="far fa-clock"></i>
+                            <span>7 min read</span>
+                        </div>
+                        <a href="wearable-health-tech.html" class="btn btn-primary btn-sm">Read</a>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Article 5 -->
+            <article class="blog-card glassmorphism">
+                <a href="ai-medical-ethics.html" class="blog-card-image">
+                    <img src="../assets/images/blog/ai-ethics.png" alt="AI Medical Ethics">
+                </a>
+                <div class="blog-card-content">
+                    <div class="post-meta">
+                        <span class="category">Ethics</span>
+                        <span class="date">April 2, 2025</span>
+                    </div>
+                    <h2><a href="ai-medical-ethics.html">Ethical Considerations in AI-Driven Healthcare</a></h2>
+                    <p>Navigating the complex ethical landscape of artificial intelligence applications in clinical decision-making and patient care.</p>
+                    <div class="blog-card-footer">
+                        <div class="read-time">
+                            <i class="far fa-clock"></i>
+                            <span>9 min read</span>
+                        </div>
+                        <a href="ai-medical-ethics.html" class="btn btn-primary btn-sm">Read</a>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Article 6 -->
+            <article class="blog-card glassmorphism">
+                <a href="blockchain-healthcare.html" class="blog-card-image">
+                    <img src="../assets/images/blog/blockchain.jpg" alt="Blockchain in Healthcare">
+                </a>
+                <div class="blog-card-content">
+                    <div class="post-meta">
+                        <span class="category">Clinical Tools</span>
+                        <span class="date">April 1, 2025</span>
+                    </div>
+                    <h2><a href="blockchain-healthcare.html">Blockchain Applications in Healthcare Data Security</a></h2>
+                    <p>How blockchain technology can revolutionize patient data security, privacy, and interoperability in modern healthcare systems.</p>
+                    <div class="blog-card-footer">
+                        <div class="read-time">
+                            <i class="far fa-clock"></i>
+                            <span>11 min read</span>
+                        </div>
+                        <a href="blockchain-healthcare.html" class="btn btn-primary btn-sm">Read</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="subscribe-cta glassmorphism">
+            <h2>Stay Updated with Digital Health Insights</h2>
+            <p>Subscribe to receive the latest articles and updates directly to your inbox</p>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+        
+        <div class="pagination">
+            <button class="btn btn-secondary disabled"><i class="fas fa-chevron-left"></i></button>
+            <button class="btn btn-primary active">1</button>
+            <button class="btn btn-secondary">2</button>
+            <button class="btn btn-secondary"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">Dr. June Wahu</a>
+                <p>Bridging Medicine and Technology</p>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/junewahumwangi" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/junewahu" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/junewahu" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Dr. June Wahu. All rights reserved.</p>
-                <div class="theme-toggle">
-                    <input type="checkbox" id="footer-dark-mode-toggle">
-                    <label for="footer-dark-mode-toggle" class="toggle-label">
-                        <i class="fas fa-sun"></i>
-                        <i class="fas fa-moon"></i>
-                        <span class="ball"></span>
-                    </label>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="../index.html#home">Home</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#projects">Projects</a></li>
+                        <li><a href="index.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Publications</a></li>
+                        <li><a href="#">Presentations</a></li>
+                        <li><a href="#">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:junewahu@gmail.com">junewahu@gmail.com</a></li>
+                        <li><a href="tel:+254759698950">+254 759 698 950</a></li>
+                        <li><a href="#">Nairobi, Kenya</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </footer>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dr. June Wahu. All rights reserved.</p>
+            <div class="theme-toggle">
+                <input type="checkbox" id="footer-dark-mode-toggle" checked>
+                <label for="footer-dark-mode-toggle" class="toggle-label">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                    <span class="ball"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</footer>
 
-    <!-- JavaScript -->
-    <script src="../assets/js/main.js"></script>
-    <script>
-        // Blog-specific JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            // Filter articles by category
-            const filterButtons = document.querySelectorAll('.category-filter button');
+<!-- JavaScript -->
+<script src="../assets/js/main.js"></script>
+<script>
+    // Theme toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.getElementById('dark-mode-toggle');
+        const footerThemeToggle = document.getElementById('footer-dark-mode-toggle');
+        const themeStyle = document.getElementById('theme-style');
+        
+        // Check for saved theme preference or use preferred color scheme
+        const currentTheme = localStorage.getItem('theme') || 
+                            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        // Apply the current theme
+        if (currentTheme === 'dark') {
+            themeStyle.href = '../assets/css/dark-mode.css';
+            themeToggle.checked = true;
+            if (footerThemeToggle) footerThemeToggle.checked = true;
+        } else {
+            themeStyle.href = '../assets/css/light-mode.css';
+            themeToggle.checked = false;
+            if (footerThemeToggle) footerThemeToggle.checked = false;
+        }
+        
+        // Toggle theme when switch is clicked
+        themeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                themeStyle.href = '../assets/css/dark-mode.css';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeStyle.href = '../assets/css/light-mode.css';
+                localStorage.setItem('theme', 'light');
+            }
             
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const category = this.textContent;
-                    const articles = document.querySelectorAll('.blog-card');
-                    
-                    articles.forEach(article => {
-                        if (category === 'All Articles') {
-                            article.style.display = 'flex';
-                        } else {
-                            const articleCategory = article.querySelector('.category').textContent;
-                            article.style.display = articleCategory === category ? 'flex' : 'none';
-                        }
-                    });
-                });
-            });
-            
-            // Search functionality
-            const searchInput = document.querySelector('.search-bar input');
-            const searchButton = document.querySelector('.search-bar button');
-            
-            searchButton.addEventListener('click', function() {
-                performSearch(searchInput.value);
-            });
-            
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch(this.value);
-                }
-            });
-            
-            function performSearch(query) {
-                const articles = document.querySelectorAll('.blog-card');
-                const searchTerm = query.toLowerCase();
-                
-                articles.forEach(article => {
-                    const title = article.querySelector('h2').textContent.toLowerCase();
-                    const excerpt = article.querySelector('p').textContent.toLowerCase();
-                    
-                    if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
-                        article.style.display = 'flex';
-                    } else {
-                        article.style.display = 'none';
-                    }
-                });
+            // Sync footer toggle if it exists
+            if (footerThemeToggle) {
+                footerThemeToggle.checked = this.checked;
             }
         });
-    </script>
+        
+        // Sync footer toggle with main toggle
+        if (footerThemeToggle) {
+            footerThemeToggle.addEventListener('change', function() {
+                themeToggle.checked = this.checked;
+                themeToggle.dispatchEvent(new Event('change'));
+            });
+        }
+        
+        // Filter articles by category
+        const filterButtons = document.querySelectorAll('.category-filter button');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.textContent;
+                const articles = document.querySelectorAll('.blog-card');
+                
+                articles.forEach(article => {
+                    if (category === 'All Articles') {
+                        article.style.display = 'flex';
+                    } else {
+                        const articleCategory = article.querySelector('.category').textContent;
+                        article.style.display = articleCategory === category ? 'flex' : 'none';
+                    }
+                });
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.querySelector('.search-bar input');
+        const searchButton = document.querySelector('.search-bar button');
+        
+        searchButton.addEventListener('click', function() {
+            performSearch(searchInput.value);
+        });
+        
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch(this.value);
+            }
+        });
+        
+        function performSearch(query) {
+            const articles = document.querySelectorAll('.blog-card');
+            const searchTerm = query.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                articles.forEach(article => article.style.display = 'flex');
+                return;
+            }
+            
+            articles.forEach(article => {
+                const title = article.querySelector('h2').textContent.toLowerCase();
+                const excerpt = article.querySelector('p').textContent.toLowerCase();
+                const category = article.querySelector('.category').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm) || category.includes(searchTerm)) {
+                    article.style.display = 'flex';
+                    article.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+        
+        // Subscribe form handling
+        const subscribeForm = document.querySelector('.subscribe-form');
+        subscribeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            // In a real implementation, you would send this to your backend
+            alert(`Thank you for subscribing! We've sent a confirmation email to ${email}`);
+            this.reset();
+        });
+    });
+</script>
 </body>
 </html>
