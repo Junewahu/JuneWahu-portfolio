@@ -3,38 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. June Wahu | Medical Tech Portfolio</title>
-    <meta name="description" content="Final year medical student with a passion for combining medical expertise with technological innovation">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="assets/images/favicon.ico">
-    
-    <!-- Font Awesome for icons -->
+    <title>The Future of AI in Medical Diagnosis | Dr. June Wahu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-   
-    <!-- Our CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/light-mode.css" id="theme-style">
-
-    <title>AI in Medical Diagnosis | Dr. June Wahu's Blog</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/light-mode.css" id="theme-style">
+    <style>
+        .blog-post {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .blog-header {
+            margin-bottom: 2rem;
+        }
+        
+        .blog-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .blog-content {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .blog-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .blog-content h2 {
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .blog-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content blockquote {
+            border-left: 4px solid var(--primary);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        
+        .back-to-blog {
+            display: inline-block;
+            margin-top: 3rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation (same as index.html) -->
     <header class="glassmorphism">
         <div class="container">
             <nav>
                 <div class="logo">
-                    <a href="#">Dr.<span>June Wahu, MBChB Candidate⚕️ </span></a>
+                    <a href="../index.html">Dr.<span>June Wahu, MBChB Candidate⚕️ </span></a>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="index.html">Blog</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
                     <li>
                         <div class="theme-toggle">
                             <input type="checkbox" id="dark-mode-toggle">
@@ -53,112 +114,149 @@
                 </div>
             </nav>
         </div>
-    </header>  <!-- This closes the navigation -->
+    </header>
 
     <main class="blog-post">
         <div class="container">
-            <article class="glassmorphism">
-                <header class="post-header">
+            <article>
+                <header class="blog-header">
                     <div class="post-meta">
-                        <span class="post-category">Medical Technology</span>
-                        <span class="post-date">March 25, 2025</span>
+                        <span class="category">AI/ML</span>
+                        <span class="date">April 3, 2025</span>
+                        <span class="read-time">8 min read</span>
                     </div>
-                    <h1>The Future of AI in Medical Diagnosis</h1>
-                    <div class="post-author">
-                        <img src="../assets/images/profile.jpg" alt="June Wahu">
+                    <h1 class="blog-title">The Future of AI in Medical Diagnosis</h1>
+                    <div class="author-info">
+                        <img src="../assets/images/profile.jpg" alt="Dr. June Wahu" class="author-avatar">
                         <div>
-                            <span>By Dr. June Wahu</span>
-                            <span>MBChB</span>
+                            <span class="author-name">Dr. June Wahu</span>
+                            <span class="author-title">Medical Tech Innovator</span>
                         </div>
                     </div>
                 </header>
-
-                <div class="post-content">
-                    <figure class="post-image">
-                        <img src="../assets/images/blog/ai-diagnosis.jpg" alt="AI analyzing medical images">
-                        <figcaption>AI systems can analyze medical images with increasing accuracy</figcaption>
-                    </figure>
-
-                    <p>The integration of artificial intelligence into medical diagnosis represents one of the most significant advancements in healthcare technology. As a medical student with a passion for technology, I've witnessed firsthand how these tools are transforming clinical practice.</p>
-
-                    <h2>Current Applications</h2>
-                    <p>Today's AI diagnostic tools excel in several areas:</p>
+                
+                <div class="blog-content">
+                    <img src="../assets/images/blog/ai-diagnosis-detail.jpg" alt="AI analyzing medical images">
+                    
+                    <p>Artificial intelligence is rapidly transforming the field of medical diagnosis, offering unprecedented opportunities to enhance accuracy, efficiency, and accessibility in healthcare. As a medical student with a passion for technology, I've been closely following these developments and want to share insights into how AI is reshaping diagnostic medicine.</p>
+                    
+                    <h2>The Current Landscape of AI Diagnostics</h2>
+                    
+                    <p>AI-powered diagnostic tools are already making significant impacts in several medical specialties:</p>
+                    
                     <ul>
-                        <li><strong>Medical Imaging:</strong> AI can detect anomalies in X-rays, MRIs, and CT scans with accuracy rivaling human radiologists.</li>
-                        <li><strong>Predictive Analytics:</strong> Machine learning models can predict disease progression based on patient data.</li>
-                        <li><strong>Symptom Analysis:</strong> NLP systems can interpret patient-reported symptoms to suggest possible diagnoses.</li>
+                        <li><strong>Radiology:</strong> AI algorithms can detect abnormalities in X-rays, CT scans, and MRIs with accuracy rivaling human radiologists.</li>
+                        <li><strong>Pathology:</strong> Machine learning models analyze tissue samples, identifying cancerous cells with remarkable precision.</li>
+                        <li><strong>Ophthalmology:</strong> Retinal scans interpreted by AI can diagnose diabetic retinopathy and other eye conditions.</li>
+                        <li><strong>Dermatology:</strong> Image recognition AI helps identify suspicious skin lesions that may indicate melanoma.</li>
                     </ul>
-
-                    <h2>Technical Challenges</h2>
-                    <p>Developing effective diagnostic AI requires overcoming several hurdles:</p>
-                    <div class="code-block">
-                        <pre><code class="language-python">
-# Example of a simple diagnostic model
-from sklearn.ensemble import RandomForestClassifier
-from medicalai import load_medical_dataset
-
-X, y = load_medical_dataset()
-model = RandomForestClassifier(n_estimators=100)
-model.fit(X, y)
-                        </code></pre>
-                    </div>
-
-                    <h2>Clinical Validation</h2>
-                    <p>In my recent project at Kenyatta National Hospital, we implemented an AI diagnostic assistant that:</p>
+                    
+                    <blockquote>
+                        "AI won't replace doctors, but doctors who use AI will replace those who don't. The future belongs to clinicians who can effectively collaborate with intelligent systems."
+                    </blockquote>
+                    
+                    <h2>Technical Foundations of Diagnostic AI</h2>
+                    
+                    <p>The most effective diagnostic AI systems typically combine several technological approaches:</p>
+                    
+                    <h3>1. Deep Learning for Image Analysis</h3>
+                    <p>Convolutional Neural Networks (CNNs) have revolutionized medical image interpretation. These algorithms learn hierarchical patterns from vast datasets of labeled medical images, enabling them to recognize subtle abnormalities that might escape human notice.</p>
+                    
+                    <h3>2. Natural Language Processing for Clinical Notes</h3>
+                    <p>NLP algorithms extract meaningful information from unstructured physician notes, lab reports, and other text-based medical records, helping to identify diagnostic patterns across patient populations.</p>
+                    
+                    <h3>3. Multimodal Data Integration</h3>
+                    <p>The most advanced systems combine imaging data with lab results, genomic information, and electronic health records to generate comprehensive diagnostic assessments.</p>
+                    
+                    <img src="../assets/images/blog/ai-workflow.png" alt="AI diagnostic workflow">
+                    
+                    <h2>Clinical Benefits and Challenges</h2>
+                    
+                    <p>The implementation of AI diagnostics offers several key advantages:</p>
+                    
+                    <ul>
+                        <li><strong>Improved Accuracy:</strong> Reduces human error and variability in interpretation</li>
+                        <li><strong>Increased Efficiency:</strong> Processes large volumes of data quickly</li>
+                        <li><strong>Enhanced Accessibility:</strong> Brings specialist-level diagnostics to underserved areas</li>
+                        <li><strong>Early Detection:</strong> Identifies subtle early signs of disease progression</li>
+                    </ul>
+                    
+                    <p>However, significant challenges remain:</p>
+                    
+                    <ul>
+                        <li>Ensuring algorithmic fairness across diverse patient populations</li>
+                        <li>Maintaining physician oversight and clinical judgment</li>
+                        <li>Addressing data privacy and security concerns</li>
+                        <li>Navigating regulatory approval processes</li>
+                    </ul>
+                    
+                    <h2>The Future: Augmented Intelligence in Medicine</h2>
+                    
+                    <p>Looking ahead, I believe the most promising applications will focus on <em>augmented intelligence</em> rather than artificial intelligence - systems designed to enhance rather than replace physician decision-making. Key areas of development include:</p>
+                    
                     <ol>
-                        <li>Reduced diagnostic errors by 28% in the ER</li>
-                        <li>Decreased time to diagnosis by 40% for complex cases</li>
-                        <li>Identified rare conditions that were initially missed</li>
+                        <li><strong>Predictive Diagnostics:</strong> AI models that can forecast disease risk before symptoms appear</li>
+                        <li><strong>Personalized Treatment Planning:</strong> Systems that recommend tailored therapies based on a patient's unique characteristics</li>
+                        <li><strong>Real-time Decision Support:</strong> Tools that provide clinicians with evidence-based suggestions during patient encounters</li>
                     </ol>
-
-                    <h2>Ethical Considerations</h2>
-                    <p>As we adopt these technologies, we must address:</p>
-                    <table class="ethical-table">
-                        <tr>
-                            <th>Issue</th>
-                            <th>Potential Solution</th>
-                        </tr>
-                        <tr>
-                            <td>Data Privacy</td>
-                            <td>Federated learning models</td>
-                        </tr>
-                        <tr>
-                            <td>Algorithm Bias</td>
-                            <td>Diverse training datasets</td>
-                        </tr>
-                        <tr>
-                            <td>Clinical Oversight</td>
-                            <td>AI as decision support, not replacement</td>
-                        </tr>
-                    </table>
-
-                    <div class="post-conclusion">
-                        <h3>Final Thoughts</h3>
-                        <p>The future of AI in diagnosis isn't about replacing doctors, but augmenting our capabilities. As we enter this new era, medical professionals must work alongside technologists to shape these tools for optimal patient outcomes.</p>
-                    </div>
+                    
+                    <p>As medical professionals, we have both an opportunity and responsibility to shape how these technologies are implemented to maximize patient benefit while maintaining ethical standards and humanistic care.</p>
                 </div>
-
-                <footer class="post-footer">
-                    <div class="post-tags">
-                        <a href="#">#AI</a>
-                        <a href="#">#MedicalTechnology</a>
-                        <a href="#">#Diagnostics</a>
-                    </div>
-                    <div class="post-share">
-                        <span>Share:</span>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </footer>
+                
+                <a href="index.html" class="back-to-blog"><i class="fas fa-arrow-left"></i> Back to all articles</a>
             </article>
         </div>
     </main>
 
+    <!-- Footer (same as index.html) -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Dr. JuneWahu. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">Dr. June Wahu</a>
+                    <p>Bridging Medicine and Technology</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Explore</h3>
+                        <ul>
+                            <li><a href="../index.html#home">Home</a></li>
+                            <li><a href="../index.html#about">About</a></li>
+                            <li><a href="../index.html#projects">Projects</a></li>
+                            <li><a href="index.html">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Connect</h3>
+                        <ul>
+                            <li><a href="https://linkedin.com/in/junewahumwangi" target="_blank">LinkedIn</a></li>
+                            <li><a href="https://github.com/junewahu" target="_blank">GitHub</a></li>
+                            <li><a href="https://twitter.com/junewahu" target="_blank">Twitter</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contact</h3>
+                        <ul>
+                            <li><a href="mailto:junewahu@gmail.com">junewahu@gmail.com</a></li>
+                            <li><a href="tel:+254759698950">+254 759 698 950</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dr. June Wahu. All rights reserved.</p>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="footer-dark-mode-toggle">
+                    <label for="footer-dark-mode-toggle" class="toggle-label">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                        <span class="ball"></span>
+                    </label>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

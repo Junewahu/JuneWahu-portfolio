@@ -12,7 +12,7 @@
         <meta name="description" content="Final year medical student with a passion for combining medical expertise with technological innovation">
         
         <!-- Favicon -->
-        <link rel="icon" href="assets/images/favicon.ico">
+        <link rel="icon" href="../assets/images/favicon.ico">
         
         <!-- Font Awesome for icons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,8 +21,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
        
         <!-- Our CSS -->
-        <link rel="stylesheet" href="assets/css/main.css">
-        <link rel="stylesheet" href="assets/css/light-mode.css" id="theme-style">
+        <link rel="stylesheet" href="../assets/css/main.css">
+        <link rel="stylesheet" href="../assets/css/light-mode.css" id="theme-style">
     </head>
     
     <link rel="stylesheet" href="../assets/css/main.css">
@@ -48,6 +48,10 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--card-bg);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .blog-card:hover {
@@ -82,12 +86,77 @@
         .blog-card-footer {
             margin-top: auto;
             padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .read-time {
             display: flex;
             align-items: center;
             color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .category {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        .date {
+            color: var(--text-secondary);
+        }
+        
+        .search-bar {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            display: flex;
+        }
+        
+        .search-bar input {
+            flex-grow: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px 0 0 8px;
+            font-size: 1rem;
+        }
+        
+        .search-bar button {
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .category-filter {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-filter {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -98,14 +167,14 @@
     <div class="container">
         <nav>
             <div class="logo">
-                <a href="#">Dr.<span>June Wahu, MBChB Candidate⚕️ </span></a>
+                <a href="../index.html">Dr.<span>June Wahu, MBChB ⚕️ </span></a>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="index.html">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
                 <li>
                     <div class="theme-toggle">
                         <input type="checkbox" id="dark-mode-toggle">
@@ -124,11 +193,7 @@
             </div>
         </nav>
     </div>
-</header>  <!-- This closes the navigation -->
-
-<header class="glassmorphism">
-        <!-- Copy the same nav from your main page -->
-    </header>
+</header>
 
     <!-- Blog Hero Section -->
     <section class="blog-hero">
@@ -150,6 +215,8 @@
                 <button class="btn btn-secondary">AI/ML</button>
                 <button class="btn btn-secondary">Telemedicine</button>
                 <button class="btn btn-secondary">Clinical Tools</button>
+                <button class="btn btn-secondary">Wearables</button>
+                <button class="btn btn-secondary">Ethics</button>
             </div>
             
             <div class="blog-grid">
@@ -161,7 +228,7 @@
                     <div class="blog-card-content">
                         <div class="post-meta">
                             <span class="category">AI/ML</span>
-                            <span class="date">June 15, 2023</span>
+                            <span class="date">April 3, 2025</span>
                         </div>
                         <h2><a href="ai-medical-diagnosis.html">The Future of AI in Medical Diagnosis</a></h2>
                         <p>Exploring how artificial intelligence is transforming diagnostic accuracy and efficiency in clinical practice.</p>
@@ -183,7 +250,7 @@
                     <div class="blog-card-content">
                         <div class="post-meta">
                             <span class="category">Telemedicine</span>
-                            <span class="date">April 3, 2023</span>
+                            <span class="date">April 3, 2025</span>
                         </div>
                         <h2><a href="telemedicine-solutions.html">Building Telemedicine Solutions for Rural Areas</a></h2>
                         <p>Technical and practical considerations for developing effective telemedicine platforms in resource-limited settings.</p>
@@ -205,7 +272,7 @@
                     <div class="blog-card-content">
                         <div class="post-meta">
                             <span class="category">Clinical Tools</span>
-                            <span class="date">February 18, 2023</span>
+                            <span class="date">April 2, 2025</span>
                         </div>
                         <h2><a href="medical-data-visualization.html">Effective Medical Data Visualization Techniques</a></h2>
                         <p>How to present complex medical data in ways that improve clinical decision-making and patient communication.</p>
@@ -215,6 +282,72 @@
                                 <span>10 min read</span>
                             </div>
                             <a href="medical-data-visualization.html" class="btn btn-primary">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- New Article 4 -->
+                <article class="blog-card glassmorphism">
+                    <a href="wearable-health-tech.html" class="blog-card-image">
+                        <img src="../assets/images/blog/wearables.jpg" alt="Wearable Health Technology">
+                    </a>
+                    <div class="blog-card-content">
+                        <div class="post-meta">
+                            <span class="category">Wearables</span>
+                            <span class="date">April 2, 2025</span>
+                        </div>
+                        <h2><a href="wearable-health-tech.html">Next-Gen Wearable Health Technology</a></h2>
+                        <p>Examining emerging wearable devices that monitor vital signs and predict health events with clinical accuracy.</p>
+                        <div class="blog-card-footer">
+                            <div class="read-time">
+                                <i class="far fa-clock"></i>
+                                <span>7 min read</span>
+                            </div>
+                            <a href="wearable-health-tech.html" class="btn btn-primary">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- New Article 5 -->
+                <article class="blog-card glassmorphism">
+                    <a href="ai-medical-ethics.html" class="blog-card-image">
+                        <img src="../assets/images/blog/ai-ethics.jpg" alt="AI Medical Ethics">
+                    </a>
+                    <div class="blog-card-content">
+                        <div class="post-meta">
+                            <span class="category">Ethics</span>
+                            <span class="date">April 2, 2025</span>
+                        </div>
+                        <h2><a href="ai-medical-ethics.html">Ethical Considerations in AI-Driven Healthcare</a></h2>
+                        <p>Navigating the complex ethical landscape of artificial intelligence applications in clinical decision-making.</p>
+                        <div class="blog-card-footer">
+                            <div class="read-time">
+                                <i class="far fa-clock"></i>
+                                <span>9 min read</span>
+                            </div>
+                            <a href="ai-medical-ethics.html" class="btn btn-primary">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- New Article 6 -->
+                <article class="blog-card glassmorphism">
+                    <a href="blockchain-healthcare.html" class="blog-card-image">
+                        <img src="../assets/images/blog/blockchain.jpg" alt="Blockchain in Healthcare">
+                    </a>
+                    <div class="blog-card-content">
+                        <div class="post-meta">
+                            <span class="category">Clinical Tools</span>
+                            <span class="date">April 1, 2025</span>
+                        </div>
+                        <h2><a href="blockchain-healthcare.html">Blockchain Applications in Healthcare Data Security</a></h2>
+                        <p>How blockchain technology can revolutionize patient data security and interoperability in healthcare systems.</p>
+                        <div class="blog-card-footer">
+                            <div class="read-time">
+                                <i class="far fa-clock"></i>
+                                <span>11 min read</span>
+                            </div>
+                            <a href="blockchain-healthcare.html" class="btn btn-primary">Read Article</a>
                         </div>
                     </div>
                 </article>
@@ -229,9 +362,53 @@
         </div>
     </main>
 
-    <!-- Reuse your footer from index.html -->
+    <!-- Footer -->
     <footer class="footer">
-        <!-- Copy the same footer from your main page -->
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">Dr. June Wahu</a>
+                    <p>Bridging Medicine and Technology</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Explore</h3>
+                        <ul>
+                            <li><a href="../index.html#home">Home</a></li>
+                            <li><a href="../index.html#about">About</a></li>
+                            <li><a href="../index.html#projects">Projects</a></li>
+                            <li><a href="index.html">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Connect</h3>
+                        <ul>
+                            <li><a href="https://linkedin.com/in/junewahumwangi" target="_blank">LinkedIn</a></li>
+                            <li><a href="https://github.com/junewahu" target="_blank">GitHub</a></li>
+                            <li><a href="https://twitter.com/junewahu" target="_blank">Twitter</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contact</h3>
+                        <ul>
+                            <li><a href="mailto:hello@junewahu.com">junewahu@gmail.com</a></li>
+                            <li><a href="tel:+254712345678">+254 759 698 950</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dr. June Wahu. All rights reserved.</p>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="footer-dark-mode-toggle">
+                    <label for="footer-dark-mode-toggle" class="toggle-label">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                        <span class="ball"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <!-- JavaScript -->
@@ -247,8 +424,17 @@
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // In a real implementation, you would filter the articles here
-                    console.log('Filter by:', this.textContent);
+                    const category = this.textContent;
+                    const articles = document.querySelectorAll('.blog-card');
+                    
+                    articles.forEach(article => {
+                        if (category === 'All Articles') {
+                            article.style.display = 'flex';
+                        } else {
+                            const articleCategory = article.querySelector('.category').textContent;
+                            article.style.display = articleCategory === category ? 'flex' : 'none';
+                        }
+                    });
                 });
             });
             
@@ -267,9 +453,19 @@
             });
             
             function performSearch(query) {
-                // In a real implementation, this would search your articles
-                console.log('Searching for:', query);
-                alert('In a complete implementation, this would search for: ' + query);
+                const articles = document.querySelectorAll('.blog-card');
+                const searchTerm = query.toLowerCase();
+                
+                articles.forEach(article => {
+                    const title = article.querySelector('h2').textContent.toLowerCase();
+                    const excerpt = article.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                        article.style.display = 'flex';
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
             }
         });
     </script>
