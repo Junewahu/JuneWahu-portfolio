@@ -2146,3 +2146,68 @@ img[loading="lazy"].loaded {
         scroll-behavior: auto !important;
     }
 }
+
+/* Pitch Decks Page Styles */
+.pitch-decks-page {
+    padding-top: 80px;
+}
+
+.pitch-decks-hero {
+    background: linear-gradient(135deg, rgba(58, 134, 255, 0.1) 0%, rgba(58, 134, 255, 0.05) 100%);
+    padding: 80px 0 40px;
+    text-align: center;
+}
+
+.pitch-decks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.pitch-deck-card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.pitch-deck-card:hover {
+    transform: translateY(-5px);
+}
+
+.deck-preview {
+    height: 200px;
+    overflow: hidden;
+}
+
+.deck-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.pitch-deck-card:hover .deck-preview img {
+    transform: scale(1.05);
+}
+
+.deck-info {
+    padding: 20px;
+}
+
+.deck-info h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.deck-info p {
+    margin-bottom: 20px;
+    color: var(--text-color-light);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .pitch-decks-grid {
+        grid-template-columns: 1fr;
+    }
+}
