@@ -1,110 +1,74 @@
+// Theme Toggle Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Theme elements
-    const themeToggle = document.getElementById('theme-switch');
+    const themeSwitch = document.getElementById('theme-switch');
     const themeStyle = document.getElementById('theme-style');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const themeMeta = document.getElementById('theme-meta');
     
-    // Theme color picker elements
-    const colorPickerToggle = document.querySelector('.color-picker-toggle');
-    const colorOptions = document.querySelector('.color-options');
-    const colorOptionsButtons = document.querySelectorAll('.color-option');
+    // Check for saved theme preference or use preferred color scheme
+    const savedTheme = localStorage.getItem('theme') || 
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Apply saved theme or system preference
-    function applyTheme() {
-        const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = prefersDarkScheme.matches;
-        
-        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-            enableDarkMode();
-        } else {
-            enableLightMode();
-        }
-        
-        // Apply saved color if exists
-        const savedColor = localStorage.getItem('theme-color');
-        if (savedColor) {
-            document.documentElement.style.setProperty('--primary-color', savedColor);
-            updateThemeColorMeta(savedColor);
-        }
-    }
-    
-    // Theme switching functions
-    function enableDarkMode() {
-        document.documentElement.setAttribute('data-theme', 'dark');
+    // Apply the saved theme
+    if (savedTheme === 'dark') {
+        themeSwitch.checked = true;
         themeStyle.href = 'assets/css/dark-mode.css';
-        localStorage.setItem('theme', 'dark');
-        if (themeToggle) themeToggle.checked = true;
-    }
-    
-    function enableLightMode() {
-        document.documentElement.setAttribute('data-theme', 'light');
+        document.body.setAttribute('data-theme', 'dark');
+        themeMeta.setAttribute('content', '#1a1423');
+    } else {
         themeStyle.href = 'assets/css/light-mode.css';
-        localStorage.setItem('theme', 'light');
-        if (themeToggle) themeToggle.checked = false;
+        document.body.setAttribute('data-theme', 'light');
+        themeMeta.setAttribute('content', '#ff85a2');
     }
     
-    // Theme toggle handler
-    function handleThemeToggle(e) {
-        if (e.target.checked) {
-            enableDarkMode();
+    // Theme switch event
+    themeSwitch.addEventListener('change', function() {
+        if (this.checked) {
+            themeStyle.href = 'assets/css/dark-mode.css';
+            document.body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            themeMeta.setAttribute('content', '#1a1423');
         } else {
-            enableLightMode();
+            themeStyle.href = 'assets/css/light-mode.css';
+            document.body.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            themeMeta.setAttribute('content', '#ff85a2');
         }
-    }
-    
-    // Update theme-color meta tag
-    function updateThemeColorMeta(color) {
-        document.querySelector('meta[name="theme-color"]').setAttribute('content', color);
-    }
-    
-    // Color picker functions
-    function toggleColorPicker() {
-        colorOptions.classList.toggle('active');
-    }
-    
-    function handleColorSelection(e) {
-        const color = e.target.getAttribute('data-color');
-        document.documentElement.style.setProperty('--primary-color', color);
-        updateThemeColorMeta(color);
-        localStorage.setItem('theme-color', color);
-        colorOptions.classList.remove('active');
-    }
-    
-    // Close color picker when clicking outside
-    function handleClickOutside(e) {
-        if (!colorPickerToggle.contains(e.target) && !colorOptions.contains(e.target)) {
-            colorOptions.classList.remove('active');
-        }
-    }
-    
-    // Initialize theme
-    applyTheme();
-    
-    // Event listeners
-    if (themeToggle) {
-        themeToggle.addEventListener('change', handleThemeToggle);
-    }
-    
-    // System preference changes
-    prefersDarkScheme.addListener((e) => {
-        if (!localStorage.getItem('theme')) {
-            e.matches ? enableDarkMode() : enableLightMode();
-        }
+        
+        // Update radar chart colors if it exists
+        updateRadarChartColors();
     });
     
-    // Color picker functionality
-    if (colorPickerToggle) {
-        colorPickerToggle.addEventListener('click', toggleColorPicker);
-        
-        colorOptionsButtons.forEach(button => {
-            button.addEventListener('click', handleColorSelection);
-        });
-        
-        document.addEventListener('click', handleClickOutside);
+    // Update radar chart colors based on theme
+    function updateRadarChartColors() {
+        const radarChart = Chart.getChart('skillsRadarChart');
+        if (radarChart) {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            
+            // Update colors
+            radarChart.data.datasets[0].backgroundColor = isDark ? 'rgba(248, 165, 194, 0.2)' : 'rgba(255, 133, 162, 0.2)';
+            radarChart.data.datasets[0].borderColor = isDark ? 'rgba(248, 165, 194, 1)' : 'rgba(255, 133, 162, 1)';
+            radarChart.data.datasets[0].pointBackgroundColor = isDark ? 'rgba(248, 165, 194, 1)' : 'rgba(255, 133, 162, 1)';
+            radarChart.data.datasets[0].pointHoverBackgroundColor = isDark ? 'rgba(248, 165, 194, 1)' : 'rgba(255, 133, 162, 1)';
+            
+            // Update scale colors
+            radarChart.options.scales.r.angleLines.color = isDark ? 'rgba(226, 217, 243, 0.2)' : 'rgba(90, 74, 106, 0.2)';
+            radarChart.options.scales.r.ticks.color = isDark ? 'rgba(226, 217, 243, 0.8)' : 'rgba(90, 74, 106, 0.8)';
+            radarChart.options.scales.r.grid.color = isDark ? 'rgba(226, 217, 243, 0.2)' : 'rgba(90, 74, 106, 0.2)';
+            radarChart.options.scales.r.pointLabels.color = isDark ? 'rgba(226, 217, 243, 0.8)' : 'rgba(90, 74, 106, 0.8)';
+            
+            radarChart.update();
+        }
     }
     
-    // Smooth transitions after load
-    setTimeout(() => {
-        document.documentElement.style.transition = 'all 0.3s ease';
-    }, 500);
+    // Watch for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem('theme')) { // Only if user hasn't set a preference
+            const newTheme = e.matches ? 'dark' : 'light';
+            themeSwitch.checked = e.matches;
+            themeStyle.href = `assets/css/${newTheme}-mode.css`;
+            document.body.setAttribute('data-theme', newTheme);
+            themeMeta.setAttribute('content', newTheme === 'dark' ? '#1a1423' : '#ff85a2');
+            updateRadarChartColors();
+        }
+    });
 });

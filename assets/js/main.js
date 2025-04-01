@@ -69,9 +69,12 @@ backToTop.addEventListener('click', (e) => {
 });
 
 // Initialize Radar Chart
+// In the initRadarChart function:
 const initRadarChart = () => {
     const radarCtx = document.getElementById('skillsRadarChart');
     if (!radarCtx) return;
+    
+    const isDark = document.body.classList.contains('dark-mode');
     
     const radarChart = new Chart(radarCtx, {
         type: 'radar',
@@ -89,13 +92,13 @@ const initRadarChart = () => {
             datasets: [{
                 label: 'Skill Level',
                 data: [96, 95, 85, 70, 75, 80, 94, 88],
-                backgroundColor: 'rgba(58, 134, 255, 0.2)',
-                borderColor: 'rgba(58, 134, 255, 1)',
+                backgroundColor: isDark ? 'rgba(248, 165, 194, 0.2)' : 'rgba(255, 133, 162, 0.2)',
+                borderColor: isDark ? 'rgba(248, 165, 194, 1)' : 'rgba(255, 133, 162, 1)',
                 borderWidth: 2,
-                pointBackgroundColor: 'rgba(58, 134, 255, 1)',
+                pointBackgroundColor: isDark ? 'rgba(248, 165, 194, 1)' : 'rgba(255, 133, 162, 1)',
                 pointBorderColor: '#fff',
                 pointHoverRadius: 5,
-                pointHoverBackgroundColor: 'rgba(58, 134, 255, 1)',
+                pointHoverBackgroundColor: isDark ? 'rgba(248, 165, 194, 1)' : 'rgba(255, 133, 162, 1)',
                 pointHoverBorderColor: '#fff',
                 pointHitRadius: 10,
                 pointBorderWidth: 2
@@ -108,19 +111,26 @@ const initRadarChart = () => {
                 r: {
                     angleLines: {
                         display: true,
-                        color: 'rgba(255, 255, 255, 0.1)'
+                        color: isDark ? 'rgba(226, 217, 243, 0.2)' : 'rgba(90, 74, 106, 0.2)'
                     },
                     suggestedMin: 0,
                     suggestedMax: 100,
                     ticks: {
                         backdropColor: 'transparent',
-                        color: document.body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)'
+                        color: isDark ? 'rgba(226, 217, 243, 0.8)' : 'rgba(90, 74, 106, 0.8)',
+                        font: {
+                            family: 'Poppins, sans-serif'
+                        }
                     },
                     grid: {
-                        color: 'rgba(255, 255, 255, 0.1)'
+                        color: isDark ? 'rgba(226, 217, 243, 0.2)' : 'rgba(90, 74, 106, 0.2)'
                     },
                     pointLabels: {
-                        color: document.body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)'
+                        color: isDark ? 'rgba(226, 217, 243, 0.8)' : 'rgba(90, 74, 106, 0.8)',
+                        font: {
+                            family: 'Poppins, sans-serif',
+                            size: 12
+                        }
                     }
                 }
             },
